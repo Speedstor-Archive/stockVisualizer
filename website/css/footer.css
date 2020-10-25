@@ -1,0 +1,208 @@
+footer{
+
+}
+
+.footerImage{
+	width:100%; 
+	height:400px; 
+	background: black;
+}
+
+.footerContent{
+	height: 350px;
+	width: 70%;
+	margin:auto;
+
+
+}
+
+.footerContent h1{
+	box-sizing: border-box;
+	float:left;
+	color:grey;
+	font-size:2.7em;
+	font-family:helvetica, sans-serif;
+	padding:76px 20px 130px 10px;
+	width:30%;
+}
+
+.footerContent h2{
+	margin-top: 3px;
+	color:#afafaf;
+}
+
+.footerContent a{
+	color:grey;
+}
+
+.footerContent ul{
+	font-size:0.9em;
+
+	width:25%;
+	box-sizing:border-box;
+
+	height:170px;
+
+	border-left:3px grey solid;
+	margin-top: 114px;
+
+	padding-top:10px;
+
+	float:left;
+	padding-left:10px;
+	color:grey;
+
+
+}
+
+.footerContent li{
+	line-height:20px;
+
+
+	list-style: none;
+	font-family:"Roboto",sans-serif,sans-serif;
+	color:grey;
+}
+
+.list{
+	padding-left:10px;
+}
+
+.qrcode{
+	float:right;
+	margin:90px 10px 10px 20px;
+
+	width:200px;
+}
+.qrcode:hover{
+	width:200px;
+}
+
+.copyright1{
+	color:grey;
+	font-size:12px;
+	display:inline;
+
+}
+
+.copyright2{
+	box-sizing:border-box;
+	width:356px;
+	color:grey;
+	margin:auto;
+	position:relative;
+}
+
+.copyright3{
+	margin:auto;
+	height:50px;
+	width:60%;
+	border-top:2px grey solid;
+	box-sizing:border-box;
+	padding-top:10px;
+}
+
+.footerContent a{
+	text-decoration:none;
+}
+
+.footerContent a:hover{
+	color:#d1d1d1;
+}
+
+@media screen and (max-width:1660px){
+	.footerContent{
+		width:80%;
+	}
+}
+
+@media screen and (max-width:1460px){
+	.footerContent{
+		width:90%;
+	}
+	.qrcode{
+		width:14%;
+	}
+	
+	.qrcode:hover{
+		width:14%;
+	}
+}
+
+@media screen and (max-width:1060px){
+	.footerContent h1{
+		float:none;
+		padding:20px;
+		margin:auto;
+		display:none;
+	}
+
+	.footerContent{
+		padding-top:20px;
+		padding-bottom:30px;
+		height:auto;
+		align-items:center;
+	}
+
+	.footerImage{
+		height:450px;
+	}
+
+	.footerContent ul{
+		padding: 40px 10px 20px 10px;
+		float:none;
+		margin:auto;
+		width:auto;
+		text-align:center;
+		box-sizing:border-box;
+		border:none;
+	}
+
+	.qrcode{
+		display:none;
+		float:none;
+		margin:0px;
+		padding-top:20px;
+		padding-bottom:30px;
+		position:static;
+		bottom:30px;
+		margin-right:auto;
+		margin-left:auto;
+	}
+}
+
+
+.lastList{
+	padding-top: 10px;
+}
+.social{
+	width: 25px;
+	height: 25px;
+	border:none;
+	margin-right: 2px;
+	background-size: fill;
+}
+.facebook{
+	background: url(../src/logos/facebook.png);
+	background-size: cover;
+}
+.twitter{
+	background: url(../src/logos/twitter.png);
+	background-size: cover;
+}
+.linkedin{
+	background: url(../src/logos/linkedin.png);
+	background-size: cover;
+}
+.instagram{
+	background: url(../src/logos/instagram.png);
+	background-size: cover;
+}
+.googlePlus{
+	background: url(../src/logos/googlePlus.png);
+	background-size: cover;
+}
+.youtube{	
+	background: url(../src/logos/youtube.png);
+	background-size: cover;
+}

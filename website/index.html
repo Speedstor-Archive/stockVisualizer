@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Speedstor - Sample game</title>
+    <meta name="description" content="This is a sample game made my speedstor. Although this is only done in a few hours, it serves as a statement of how easy it is for me to make programs. If you are intersted in having and owning your own program, feel free to contact me through my website, speedstor.net">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" href="./css/header.css">
+	<link rel="stylesheet" type="text/css" href="./css/footer.css">
+    <script src="copy.js"></script>
+	<script type="text/javascript" src="../js/javascript.js"></script>
+</head>
+<body onLoad='init()'>
+	<header id="mainHeader">
+            <a href="game.html"><h1>Speedstor</h1></a>
+            <nav id="navBar">
+                 <a href="../index.php"><button>Home</button></a>
+                 <a href="../services.php"><button>Services</button></a>
+                 <a href="../prices.php"><button>Prices</button></a>
+                 <a href="../about.php"><button>About</button></a>
+            
+                 <a onclick="start()" class="signIn">Log In </a>
+            </nav>
+            <div id="menuButton" onclick="toggleSidebar()">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      </div>
+       
+                 <div id="sideBar">
+                      <a href="#" class="getStartedMenu">Get Started</a>
+                      <li class="sideBarTop" onclick="toggleSidebar()">X</li>
+                      
+                      <ul>
+                          <a href="../index.php"><li class="sideMenu">Home</li></a>
+                          <a href="../services.php"><li class="sideMenu">Services</li></a>
+                          <a href="../prices.php"><li class="sideMenu">Prices</li></a>
+                          <a href="../about.php"><li class="sideMenu">About</li></a>
+                          <a href="../tempGame/game.html"><li class="sideMenu">Canvas</li></a>
+                          <a onclick="start()"><li class="sideMenu">Log In</li></a>
+                      </ul>
+                  </div>
+              </div>  
+       </header>
+
+       
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="./js/shape.js"></script>
+<script type="text/javascript" src="./js/visualizer.js"></script>
+<style>
+    #mainHeader h1{
+        font-size: 32px !important;
+    }
+    @media only screen and (max-width: 700px) {
+        h4{
+            font-size: 14px;
+        }
+    }
+</style>
+<div id='loadDiv' style='width: 100%; height: calc(100vh - 58px); display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #666666, #2d4e33);'>
+    <img src="./img/loader.gif" style="width: calc(100vw / 20);"/>
+</div>
+<div id='appWrap' style='display: none;'>
+    <div id='keyOverlay' style='height: calc(100vh - 58px); width: 100vw; display: inline-block; position: absolute; bottom: 0px; left: 0px;'>
+        <h4 style='position: absolute; top: 10px; left: 10px; background:rgba(245, 245, 245, 0.6); padding: 4px 6px;'>Last Trade % (negative)</h4>
+        <h4 style='position: absolute; top: 10px; left: calc(100vw/2 - 109px); background:rgba(245, 245, 245, 0.6); padding: 4px 6px;'>Highest Exchange</h4>
+        <h4 style='position: absolute; top: 10px; right: 30px; background:rgba(245, 245, 245, 0.6); padding: 4px 6px;'>Last Trade $ (positive)</h4>
+        <h4 style='position: absolute; top: calc(100vh/2 - 45px); right: 30px; background:rgba(245, 245, 245, 0.6); padding: 4px 6px;'>Lowest Exchange</h4>
+        <h4 style='position: absolute; bottom: 10px; right: 30px; background:rgba(245, 245, 245, 0.6); padding: 4px 6px;'>Last Trade % (positive)</h4>
+        <h4 style='position: absolute; bottom: 10px; left: calc(100vw/2 - 144px); background:rgba(245, 245, 245, 0.6); padding: 4px 6px;'>Highest Exchange %</h4>
+        <h4 style='position: absolute; bottom: 10px; left: 214px; background:rgba(245, 245, 245, 0.6); padding: 4px 6px;'>Lowest Exchange %</h4>
+        <h4 style='position: absolute; top: calc(100vh/2 - 45px); left: 10px; background:rgba(245, 245, 245, 0.6); padding: 4px 6px;'>Last Trade $ (negative)</h4>
+    </div>
+    <div style='background: url(./img/stockOverlay.jpg); opacity: 0.07; height: calc(100vh - 58px); width: 100vw; display: inline-block; position: absolute; bottom: 0px; left: 0px;'></div>
+    <canvas id="visualizer" style="height: calc(100vh - 58px); width: 100%;"></canvas>
+    <div class='card' id='selectBox' style='background: rgba(245, 245, 245, 0.6); display: inline-block; position: absolute; bottom: 10px; left: 10px;'>
+        <div class='card-body' style="padding: 7px 1.25rem;">
+            <div class="control-group" id='selectBox-inner' style="overflow:hidden;">
+
+            </div>
+            <button id='selectBox-toggle' class='btn btn-secondary btn-sm' onclick="closeOptions();">Close</button>
+            <button id='dayNight-toggle' class='btn btn-secondary btn-sm' onclick="nightDayToggle();">Night</button>
+        </div>
+    </div>
+</div>
+
+
+    
+<footer>
+
+    <div class="footerImage">
+        <div class="footerContent">
+            <h1> Speedstor </h1>
+            <ul>
+                <li><h2>speedstor.net</h2></li>
+                <li class="list"><a href="../index.php">Home</a></li>
+                <li class="list"><a href="../club.php">Club</a></li>				
+                <li class="list"><a href="../services.php">Services</a></li>
+                <li class="list"><a href="../prices.php">Prices</a></li>
+                <li class="list"><a href="../about.php">About</a></li>
+                <li class="list"><a href="tempGame/game.html">Canvas</a></li>
+            </ul>
+            <ul>
+                <li><h2>Contact</h2></li>
+                <li class="list">Phone: +1 657-252-0269</li>
+                <li class="list">Email: <a href="mailto:aldrin.cheung@gmail.com">aldrin.cheung@gmail.com</a></li>
+                <li class="list">
+                    <button class="social facebook"></button>
+                    <button class="social twitter"></button>
+                    <button class="social linkedin"></button>
+                    <button class="social instagram"></button>
+                    <button class="social googlePlus"></button>
+                    <button class="social youtube"></button>
+                </li>
+            </ul>
+            <img src="../src/wechatQrCode.jpg" class="qrcode"></img>
+        </div>
+
+        <div class="copyright3">
+            <p class="copyright2">Copyright &copy; 2018 Speedstor. All Rights Reserved </p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
